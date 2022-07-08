@@ -5,8 +5,11 @@ from .permissions import IsAuthorOrReadOnly
 
 
 class PostList(generics.ListCreateAPIView):
-    queryset = Post.objects.all().order_by('-update_at')
     serializer_class = PostSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Post.objects.filter(author=user)
 
 
 class PostDetail(generics.RetrieveUpdateDestroyAPIView):
