@@ -37,9 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Local:
+    # Installed apps
+    'rest_framework'
+    # Local apps:
     'posts',
 ]
+
+
+# Add rest_framework config
+REST_FRAMEWORK = {
+        'DEFAULT_PERMISSION_CLASSES': [
+            'rest_framework.permissions.AllowAny',
+        ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
